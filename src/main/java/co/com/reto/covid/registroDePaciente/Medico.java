@@ -22,8 +22,8 @@ public class Medico extends Entity<IdentificacionMedico> {
         this.especialidad = especialidad;
     }
 
-    public void actualizarNombreMedico(Nombres nombres){
-        this.nombres = Objects.requireNonNull(nombres);
+    public void actualizarRegistroMedico(RegistroMedico registroMedico){
+        this.registroMedico = Objects.requireNonNull(registroMedico);
     }
 
     public void actualizarTelefonoMedico(Telefono telefono){

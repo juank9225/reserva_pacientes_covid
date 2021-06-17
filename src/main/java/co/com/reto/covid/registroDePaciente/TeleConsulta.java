@@ -21,6 +21,12 @@ public class TeleConsulta extends Entity<RadicadoId> {
         this.satisfaccion = satisfaccion;
     }
 
+    public void actualizarTeleConsulta(Fecha fecha,Hora hora,Satisfaccion satisfaccion){
+        this.fecha = Objects.requireNonNull(fecha);
+        this.hora = Objects.requireNonNull(hora);
+        this.satisfaccion = Objects.requireNonNull(satisfaccion);
+    }
+
     public void actualizarFechaTeleConsulta(Fecha fecha){
         this.fecha = Objects.requireNonNull(fecha);
     }

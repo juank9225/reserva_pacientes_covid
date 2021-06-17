@@ -22,6 +22,14 @@ public class Evolucion extends Entity <NumeroId>{
         this.observacion = observacion;
     }
 
+    public void actualizarEvolucion(Estado estado, Temperatura temperatura,SaturacionDeOxigeno saturacionDeOxigeno,FrecuenciaRespiratoria frecuenciaRespiratoria,Observacion observacion){
+        this.estado = Objects.requireNonNull(estado);
+        this.temperatura = Objects.requireNonNull(temperatura);
+        this.saturacionDeOxigeno = Objects.requireNonNull(saturacionDeOxigeno);
+        this.frecuenciaRespiratoria = Objects.requireNonNull(frecuenciaRespiratoria);
+        this.observacion = Objects.requireNonNull(observacion);
+    }
+
     public void actualizarEstadoPaciente(Estado estado){
         this.estado = Objects.requireNonNull(estado);
     }

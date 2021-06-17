@@ -3,7 +3,9 @@ package co.com.reto.covid.registroDePaciente;
 import co.com.reto.covid.registroDePaciente.events.*;
 import co.com.reto.covid.registroDePaciente.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -24,6 +26,12 @@ public class RegistroDePaciente extends AggregateEvent<AdmisionId> {
     private RegistroDePaciente(AdmisionId entityId){
         super(entityId);
         subscribe(new RegistroDePacienteChange(this));
+    }
+
+    public static RegistroDePaciente from(AdmisionId admisionId, List<DomainEvent> events){
+        var registroDePaciente = new RegistroDePaciente(admisionId);
+        events.forEach(registroDePaciente::applyEvent);
+        return registroDePaciente;
     }
 
     public void agregarPaciente(IdentificacionPaciente identificacionPaciente, TipoDeIdentificacion tipoDeIdentificacion, Nombres nombres,Telefono telefono,Eps eps){
@@ -96,7 +104,7 @@ public class RegistroDePaciente extends AggregateEvent<AdmisionId> {
         appendChange(new EspecialidadDelMedicoActualizada(identificacionMedico,especialidad)).apply();
     }
 
-    public void actualiarEvolucion(NumeroId numeroId,Estado estado,Temperatura temperatura,SaturacionDeOxigeno saturacionDeOxigeno,FrecuenciaRespiratoria frecuenciaRespiratoria,Observacion observacion){
+    public void actualizarEvolucion(NumeroId numeroId, Estado estado, Temperatura temperatura, SaturacionDeOxigeno saturacionDeOxigeno, FrecuenciaRespiratoria frecuenciaRespiratoria, Observacion observacion){
 
         appendChange(new EvolucionActualizada(numeroId,
                 estado,
