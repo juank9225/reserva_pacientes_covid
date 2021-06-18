@@ -4,6 +4,8 @@ import co.com.reto.covid.domain.registrodepaciente.values.*;
 import co.com.sofka.domain.generic.Command;
 
 public class ActualizarEvolucion implements Command {
+
+    private final AdmisionId admisionId;
     private final NumeroId numeroId;
     private final Estado estado;
     private final Temperatura temperatura;
@@ -11,13 +13,18 @@ public class ActualizarEvolucion implements Command {
     private final FrecuenciaRespiratoria frecuenciaRespiratoria;
     private final Observacion observacion;
 
-    public ActualizarEvolucion(NumeroId numeroId, Estado estado, Temperatura temperatura, SaturacionDeOxigeno saturacionDeOxigeno, FrecuenciaRespiratoria frecuenciaRespiratoria, Observacion observacion) {
+    public ActualizarEvolucion(AdmisionId admisionId, NumeroId numeroId, Estado estado, Temperatura temperatura, SaturacionDeOxigeno saturacionDeOxigeno, FrecuenciaRespiratoria frecuenciaRespiratoria, Observacion observacion) {
+        this.admisionId = admisionId;
         this.numeroId = numeroId;
         this.estado = estado;
         this.temperatura = temperatura;
         this.saturacionDeOxigeno = saturacionDeOxigeno;
         this.frecuenciaRespiratoria = frecuenciaRespiratoria;
         this.observacion = observacion;
+    }
+
+    public AdmisionId getAdmisionId() {
+        return admisionId;
     }
 
     public NumeroId getNumeroId() {

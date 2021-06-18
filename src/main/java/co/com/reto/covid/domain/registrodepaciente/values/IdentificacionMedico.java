@@ -8,7 +8,7 @@ public class IdentificacionMedico extends Identity {
 
     }
 
-    private IdentificacionMedico(String id){
+    public IdentificacionMedico(String id){
         super(id);
     }
 
