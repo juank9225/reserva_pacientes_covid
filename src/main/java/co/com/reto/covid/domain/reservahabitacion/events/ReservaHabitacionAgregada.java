@@ -9,6 +9,7 @@ public class ReservaHabitacionAgregada extends DomainEvent {
     private final Fecha fecha;
     private final Hora hora;
     private final Estado estado;
+
     public ReservaHabitacionAgregada(Fecha fecha, Hora hora, Estado estado) {
         super("sofka.reservahabitacion.reservahabitacionagregada");
         this.fecha = fecha;

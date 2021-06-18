@@ -1,7 +1,6 @@
 package co.com.reto.covid.usecases.registrodepaciente;
 
 import co.com.reto.covid.domain.registrodepaciente.commands.AgregarMedico;
-import co.com.reto.covid.domain.registrodepaciente.commands.AgregarPaciente;
 import co.com.reto.covid.domain.registrodepaciente.events.PacienteAgregado;
 import co.com.reto.covid.domain.registrodepaciente.events.RegistroDePacienteCreado;
 import co.com.reto.covid.domain.registrodepaciente.values.*;
@@ -16,7 +15,6 @@ import org.mockito.Mock;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -61,7 +59,7 @@ class AgregarMedicoUseCaseTest {
     private List<DomainEvent> events() {
         return List.of(new RegistroDePacienteCreado(
                 new Fecha(new Date(1990,05,20))
-        ),new PacienteAgregado(
+               ),new PacienteAgregado(
                 new IdentificacionPaciente("1064937422"),
                 new TipoDeIdentificacion("RC"),
                 new Nombres("juan"),

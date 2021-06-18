@@ -8,7 +8,7 @@ public class AdmisionId extends Identity {
 
     }
 
-    private AdmisionId(String id){
+    public AdmisionId(String id){
         super(id);
     }
 

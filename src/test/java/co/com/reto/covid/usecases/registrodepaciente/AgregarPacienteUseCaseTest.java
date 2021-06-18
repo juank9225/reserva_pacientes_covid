@@ -14,7 +14,6 @@ import org.mockito.Mock;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -60,7 +59,7 @@ class AgregarPacienteUseCaseTest {
     private List<DomainEvent> events() {
         return List.of(new RegistroDePacienteCreado(
                 new Fecha(new Date(1990,05,20))
-        ));
+               ));
     }
 
 }
