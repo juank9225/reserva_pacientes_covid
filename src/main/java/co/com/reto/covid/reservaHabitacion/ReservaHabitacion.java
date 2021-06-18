@@ -1,14 +1,12 @@
 package co.com.reto.covid.reservaHabitacion;
 
-import co.com.reto.covid.registroDePaciente.values.AdmisionId;
-import co.com.reto.covid.registroDePaciente.values.Estado;
-import co.com.reto.covid.registroDePaciente.values.Fecha;
-import co.com.reto.covid.registroDePaciente.values.Hora;
+import co.com.reto.covid.registroDePaciente.values.*;
 import co.com.reto.covid.reservaHabitacion.events.*;
 import co.com.reto.covid.reservaHabitacion.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class ReservaHabitacion extends AggregateEvent<NumeroReservaId> {
@@ -55,4 +53,58 @@ public class ReservaHabitacion extends AggregateEvent<NumeroReservaId> {
         appendChange(new HabitacionDePacienteActualizada(estado,cantidadCama)).apply();
     }
 
+    public void actualizarEstadoDeHabitacion(Estado estado){
+        appendChange(new EstadoDeHabitacionDePacienteActualizada(estado)).apply();
+    }
+
+    public void actualizarMedicamento(Medicamento medicamento){
+        appendChange(new MedicamentoActualizado(medicamento)).apply();
+    }
+
+    public void actualizarInsumo(Insumo insumo){
+        appendChange(new InsumoActualizado(insumo)).apply();
+    }
+
+    protected Optional<Habitacion> getHabitacionPorId(NumeroHabitacion numeroHabitacion) {
+        return habitaciones
+                .stream()
+                .filter(habitacion -> habitacion.identity().equals(numeroHabitacion))
+                .findFirst();
+    }
+
+
+    protected Optional<Botiquin> getBotiquinPorId(ConsecutivoId consecutivoId) {
+        return botiquines
+                .stream()
+                .filter(botiquin -> botiquin.identity().equals(consecutivoId))
+                .findFirst();
+    }
+
+    public Fecha getFecha() {
+        return fecha;
+    }
+
+    public Hora getHora() {
+        return hora;
+    }
+
+    public AdmisionId getAdmisionId() {
+        return admisionId;
+    }
+
+    public IdentificacionEmpleado getIdentificacionEmpleado() {
+        return identificacionEmpleado;
+    }
+
+    public Set<Habitacion> getHabitaciones() {
+        return habitaciones;
+    }
+
+    public Set<Botiquin> getBotiquines() {
+        return botiquines;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
 }
