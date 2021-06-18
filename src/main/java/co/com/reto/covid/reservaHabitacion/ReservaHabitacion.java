@@ -25,6 +25,11 @@ public class ReservaHabitacion extends AggregateEvent<NumeroReservaId> {
 
     }
 
+    private ReservaHabitacion(NumeroReservaId entityId) {
+        super(entityId);
+        subscribe(new ReservaHabitacionChange(this));
+    }
+
     public void asociarAdmisionDePaciente(AdmisionId admisionId){
         appendChange(new AdmisionAsociada(admisionId)).apply();
     }
@@ -49,20 +54,20 @@ public class ReservaHabitacion extends AggregateEvent<NumeroReservaId> {
         appendChange(new BotiquinAgregado(consecutivoId,tipo,medicamento,insumo)).apply();
     }
 
-    public void actualizarHabitacionDePaciente(Estado estado,CantidadCama cantidadCama){
-        appendChange(new HabitacionDePacienteActualizada(estado,cantidadCama)).apply();
+    public void actualizarHabitacionDePaciente(NumeroHabitacion numeroHabitacion,Estado estado,CantidadCama cantidadCama){
+        appendChange(new HabitacionDePacienteActualizada(numeroHabitacion,estado,cantidadCama)).apply();
     }
 
-    public void actualizarEstadoDeHabitacion(Estado estado){
-        appendChange(new EstadoDeHabitacionDePacienteActualizada(estado)).apply();
+    public void actualizarEstadoDeHabitacion(NumeroHabitacion numeroHabitacion,Estado estado){
+        appendChange(new EstadoDeHabitacionDePacienteActualizada(numeroHabitacion,estado)).apply();
     }
 
-    public void actualizarMedicamento(Medicamento medicamento){
-        appendChange(new MedicamentoActualizado(medicamento)).apply();
+    public void actualizarMedicamento(ConsecutivoId consecutivoId,Medicamento medicamento){
+        appendChange(new MedicamentoActualizado(consecutivoId,medicamento)).apply();
     }
 
-    public void actualizarInsumo(Insumo insumo){
-        appendChange(new InsumoActualizado(insumo)).apply();
+    public void actualizarInsumo(ConsecutivoId consecutivoId,Insumo insumo){
+        appendChange(new InsumoActualizado(consecutivoId,insumo)).apply();
     }
 
     protected Optional<Habitacion> getHabitacionPorId(NumeroHabitacion numeroHabitacion) {
