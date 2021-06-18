@@ -13,8 +13,8 @@ public class Estado implements ValueObject<String> {
         if (this.value.isBlank()){
             throw new IllegalArgumentException("el estado no puede ser vacio");
         }
-        if (this.value.length() <= 6 || this.value.length() >= 11){
-            throw new IllegalArgumentException("el estado debe terner mas de 5 caracteres y menos de 11 caracteres");
+        if (this.value.length() <= 6 || this.value.length() >= 50){
+            throw new IllegalArgumentException("el estado debe terner mas de 5 caracteres y menos de 50 caracteres");
         }
     }
 

@@ -7,7 +7,7 @@ public class NumeroId extends Identity {
 
     }
 
-    private NumeroId(String id){
+    public NumeroId(String id){
         super(id);
     }
 

@@ -8,7 +8,7 @@ public class RadicadoId extends Identity {
 
     }
 
-    private RadicadoId(String id){
+    public RadicadoId(String id){
         super(id);
     }
 
