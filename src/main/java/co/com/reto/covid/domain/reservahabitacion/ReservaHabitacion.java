@@ -4,7 +4,9 @@ import co.com.reto.covid.domain.registrodepaciente.values.*;
 import co.com.reto.covid.domain.reservahabitacion.events.*;
 import co.com.reto.covid.domain.reservahabitacion.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -28,6 +30,12 @@ public class ReservaHabitacion extends AggregateEvent<NumeroReservaId> {
     private ReservaHabitacion(NumeroReservaId entityId) {
         super(entityId);
         subscribe(new ReservaHabitacionChange(this));
+    }
+
+    public static ReservaHabitacion from(NumeroReservaId numeroReservaId, List<DomainEvent> events) {
+        var reservaHabitacion = new ReservaHabitacion(numeroReservaId);
+        events.forEach(reservaHabitacion::applyEvent);
+        return reservaHabitacion;
     }
 
     public void asociarAdmisionDePaciente(AdmisionId admisionId){

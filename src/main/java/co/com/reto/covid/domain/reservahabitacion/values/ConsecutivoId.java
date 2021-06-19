@@ -7,7 +7,7 @@ public class ConsecutivoId extends Identity {
 
     }
 
-    private ConsecutivoId(String id){
+    public ConsecutivoId(String id){
         super(id);
     }
 

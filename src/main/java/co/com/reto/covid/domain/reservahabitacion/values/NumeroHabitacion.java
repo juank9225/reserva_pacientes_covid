@@ -9,7 +9,7 @@ public class NumeroHabitacion extends Identity {
 
     }
 
-    private NumeroHabitacion(String id){
+    public NumeroHabitacion(String id){
         super(id);
     }
 

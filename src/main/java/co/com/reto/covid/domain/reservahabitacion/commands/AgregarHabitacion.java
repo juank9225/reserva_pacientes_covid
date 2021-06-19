@@ -5,8 +5,9 @@ import co.com.reto.covid.domain.reservahabitacion.values.CantidadCama;
 import co.com.reto.covid.domain.reservahabitacion.values.NumeroHabitacion;
 import co.com.reto.covid.domain.reservahabitacion.values.NumeroReservaId;
 import co.com.reto.covid.domain.reservahabitacion.values.Tipo;
+import co.com.sofka.domain.generic.Command;
 
-public class AgregarHabitacion {
+public class AgregarHabitacion implements Command {
     private final NumeroReservaId numeroReservaId;
     private final NumeroHabitacion numeroHabitacion;
     private final Tipo tipo;

@@ -1,14 +1,12 @@
 package co.com.reto.covid.usecases.reservahabitacion;
 
-import co.com.reto.covid.domain.registrodepaciente.events.RegistroDePacienteCreado;
+
 import co.com.reto.covid.domain.registrodepaciente.values.Estado;
 import co.com.reto.covid.domain.registrodepaciente.values.Fecha;
 import co.com.reto.covid.domain.registrodepaciente.values.Hora;
-import co.com.reto.covid.domain.reservahabitacion.ReservaHabitacion;
 import co.com.reto.covid.domain.reservahabitacion.commands.CrearReservaHabitacion;
 import co.com.reto.covid.domain.reservahabitacion.events.ReservaHabitacionAgregada;
 import co.com.reto.covid.domain.reservahabitacion.values.NumeroReservaId;
-import co.com.reto.covid.usecases.registrodepaciente.RegistroDePacienteCreadoUseCase;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.RequestCommand;
 import org.junit.jupiter.api.Assertions;
