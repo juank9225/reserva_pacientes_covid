@@ -11,6 +11,7 @@ public class HabitacionAgregada extends DomainEvent {
     private final Tipo tipo;
     private final Estado estado;
     private final CantidadCama cantidadCama;
+
     public HabitacionAgregada(NumeroHabitacion numeroHabitacion, Tipo tipo, Estado estado, CantidadCama cantidadCama) {
         super("sofka.reservahabitacion.habitacionagregada");
         this.numeroHabitacion = numeroHabitacion;

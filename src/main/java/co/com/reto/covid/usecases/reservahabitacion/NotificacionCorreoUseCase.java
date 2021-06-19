@@ -9,7 +9,11 @@ public class NotificacionCorreoUseCase extends UseCase<TriggeredEvent<AdmisionAs
     @Override
     public void executeUseCase(TriggeredEvent<AdmisionAsociada> admisionAsociadaTriggeredEvent) {
         var event = admisionAsociadaTriggeredEvent.getDomainEvent();
-        var pacienteService = getService(ServiceQuery.class).orElseThrow();
+        var aseguradoraService = getService(MedicoService.class).orElseThrow();
+        var sender = getService(SenderEmailService.class).orElseThrow();
+
+        var email = aseguradoraService.getEmailAseguradora(event.getIdentificacionMedico());
+        sender.sendEmail(email, "contet body");
 
     }
 }

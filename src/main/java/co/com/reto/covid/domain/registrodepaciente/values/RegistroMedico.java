@@ -8,11 +8,11 @@ public class RegistroMedico implements ValueObject<String> {
     private final String value;
 
     public RegistroMedico(String value) {
-        this.value = Objects.requireNonNull(value,"el registro medico es requerido");
-        if (this.value.isBlank()){
+        this.value = Objects.requireNonNull(value, "el registro medico es requerido");
+        if (this.value.isBlank()) {
             throw new IllegalArgumentException("el registro medico no puede ser vacio");
         }
-        if (this.value.length() < 4 || this.value.length() > 10){
+        if (this.value.length() < 4 || this.value.length() > 10) {
             throw new IllegalArgumentException("el registro debe terner mas de 3 caracteres y menos de 11 caracteres");
         }
     }

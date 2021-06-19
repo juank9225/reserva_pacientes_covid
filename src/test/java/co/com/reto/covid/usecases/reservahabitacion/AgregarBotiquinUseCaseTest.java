@@ -1,9 +1,6 @@
 package co.com.reto.covid.usecases.reservahabitacion;
 
-import co.com.reto.covid.domain.registrodepaciente.values.AdmisionId;
-import co.com.reto.covid.domain.registrodepaciente.values.Estado;
-import co.com.reto.covid.domain.registrodepaciente.values.Fecha;
-import co.com.reto.covid.domain.registrodepaciente.values.Hora;
+import co.com.reto.covid.domain.registrodepaciente.values.*;
 import co.com.reto.covid.domain.reservahabitacion.commands.AgregarBotiquin;
 import co.com.reto.covid.domain.reservahabitacion.events.AdmisionAsociada;
 import co.com.reto.covid.domain.reservahabitacion.events.HabitacionAgregada;
@@ -33,14 +30,14 @@ class AgregarBotiquinUseCaseTest {
     private DomainEventRepository repository;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         agregarBotiquinUseCase = new AgregarBotiquinUseCase();
         repository = mock(DomainEventRepository.class);
         agregarBotiquinUseCase.addRepository(repository);
     }
 
     @Test
-    void setAgregarBotiquinUseCaseHappyPath(){
+    void setAgregarBotiquinUseCaseHappyPath() {
         var command = new AgregarBotiquin(
                 NumeroReservaId.of("5555"),
                 new ConsecutivoId("01"),
@@ -62,12 +59,13 @@ class AgregarBotiquinUseCaseTest {
 
     private List<DomainEvent> events() {
         return List.of(new ReservaHabitacionAgregada(
-                new Fecha(new Date(1990,05,20)),
+                new Fecha(new Date(1990, 05, 20)),
                 new Hora("05:00 pm"),
                 new Estado("no registra pago")
-        ),new AdmisionAsociada(
-                new AdmisionId("1111")
-        ),new HabitacionAgregada(
+        ), new AdmisionAsociada(
+                new AdmisionId("1111"),
+                new IdentificacionMedico("987654321")
+        ), new HabitacionAgregada(
                 new NumeroHabitacion("21"),
                 new Tipo("empresarial"),
                 new Estado("aseada y en exelemte estado"),

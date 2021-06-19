@@ -11,7 +11,6 @@ import java.util.Optional;
 import java.util.Set;
 
 public class RegistroDePaciente extends AggregateEvent<AdmisionId> {
-
     protected Fecha fecha;
     protected Set<Paciente> pacientes;
     protected Set<Medico> medicos;

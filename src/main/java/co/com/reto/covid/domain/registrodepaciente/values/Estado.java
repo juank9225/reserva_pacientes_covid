@@ -9,11 +9,11 @@ public class Estado implements ValueObject<String> {
     private final String value;
 
     public Estado(String value) {
-        this.value = Objects.requireNonNull(value,"el estado es obligatorio");
-        if (this.value.isBlank()){
+        this.value = Objects.requireNonNull(value, "el estado es obligatorio");
+        if (this.value.isBlank()) {
             throw new IllegalArgumentException("el estado no puede ser vacio");
         }
-        if (this.value.length() <= 6 || this.value.length() >= 50){
+        if (this.value.length() <= 6 || this.value.length() >= 50) {
             throw new IllegalArgumentException("el estado debe terner mas de 5 caracteres y menos de 50 caracteres");
         }
     }

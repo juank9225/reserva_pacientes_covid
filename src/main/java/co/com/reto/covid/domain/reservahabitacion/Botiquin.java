@@ -9,7 +9,6 @@ import co.com.sofka.domain.generic.Entity;
 import java.util.Objects;
 
 public class Botiquin extends Entity<ConsecutivoId> {
-
     protected Tipo tipo;
     protected Medicamento medicamento;
     protected Insumo insumo;

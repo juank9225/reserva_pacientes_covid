@@ -7,6 +7,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 public class RegistroMedicoActualizado extends DomainEvent {
     private final IdentificacionMedico identificacionMedico;
     private final RegistroMedico registroMedico;
+
     public RegistroMedicoActualizado(IdentificacionMedico identificacionMedico, RegistroMedico registroMedico) {
         super("sofka.registropersona.registromedicoactualizado");
         this.identificacionMedico = identificacionMedico;

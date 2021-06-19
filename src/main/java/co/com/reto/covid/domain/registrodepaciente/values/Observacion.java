@@ -8,11 +8,11 @@ public class Observacion implements ValueObject<String> {
     private final String value;
 
     public Observacion(String value) {
-        this.value = Objects.requireNonNull(value,"la observacion es requerida");
-        if (this.value.isBlank()){
+        this.value = Objects.requireNonNull(value, "la observacion es requerida");
+        if (this.value.isBlank()) {
             throw new IllegalArgumentException("la observacion no puede ser vacia");
         }
-        if (this.value.length() < 10 || this.value.length() >250){
+        if (this.value.length() < 10 || this.value.length() > 250) {
             throw new IllegalArgumentException("la observacion debe tener entre 10 y 250 caracteres");
         }
     }

@@ -9,6 +9,7 @@ public class PacienteAgregado extends DomainEvent {
     private final Nombres nombres;
     private final Telefono telefono;
     private final Eps eps;
+
     public PacienteAgregado(IdentificacionPaciente identificacionPaciente, TipoDeIdentificacion tipoDeIdentificacion, Nombres nombres, Telefono telefono, Eps eps) {
         super("sofka.registropersona.pacienteagregado");
         this.identificacionPaciente = identificacionPaciente;

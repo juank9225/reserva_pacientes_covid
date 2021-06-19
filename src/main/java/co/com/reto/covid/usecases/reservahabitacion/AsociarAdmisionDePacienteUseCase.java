@@ -10,9 +10,9 @@ public class AsociarAdmisionDePacienteUseCase extends UseCase<RequestCommand<Aso
     @Override
     public void executeUseCase(RequestCommand<AsociarAdmisionDePaciente> asociarAdmisionDePacienteRequestCommand) {
         var command = asociarAdmisionDePacienteRequestCommand.getCommand();
-        var reserva = ReservaHabitacion.from(command.getNumeroReservaId(),retrieveEvents(command.getAdmisionId().value()));
+        var reserva = ReservaHabitacion.from(command.getNumeroReservaId(), retrieveEvents(command.getAdmisionId().value()));
 
-        reserva.asociarAdmisionDePaciente(command.getAdmisionId());
+        reserva.asociarAdmisionDePaciente(command.getAdmisionId(), command.getIdentificacionMedico());
 
         emit().onResponse(new ResponseEvents(reserva.getUncommittedChanges()));
     }

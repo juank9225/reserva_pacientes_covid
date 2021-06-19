@@ -8,11 +8,11 @@ public class TipoDeIdentificacion implements ValueObject<String> {
     private final String value;
 
     public TipoDeIdentificacion(String value) {
-        this.value = Objects.requireNonNull(value,"el tipo de identificacion es requerido");
-        if (this.value.isBlank()){
+        this.value = Objects.requireNonNull(value, "el tipo de identificacion es requerido");
+        if (this.value.isBlank()) {
             throw new IllegalArgumentException("el tipo de identificacion no puede ser vacio");
         }
-        if (this.value.length() <=0 || this.value.length() >2){
+        if (this.value.length() <= 0 || this.value.length() > 2) {
             throw new IllegalArgumentException("el tipo de identificacion debe tener entre 1 y 2 caracteres");
         }
     }

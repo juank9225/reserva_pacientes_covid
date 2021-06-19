@@ -21,9 +21,9 @@ public class ReservaHabitacion extends AggregateEvent<NumeroReservaId> {
     protected Set<Botiquin> botiquines;
     protected Estado estado;
 
-    public ReservaHabitacion(NumeroReservaId numeroReservaId,Fecha fecha, Hora hora,Estado estado) {
+    public ReservaHabitacion(NumeroReservaId numeroReservaId, Fecha fecha, Hora hora, Estado estado) {
         super(numeroReservaId);
-        appendChange(new ReservaHabitacionAgregada(fecha,hora,estado)).apply();
+        appendChange(new ReservaHabitacionAgregada(fecha, hora, estado)).apply();
 
     }
 
@@ -38,44 +38,44 @@ public class ReservaHabitacion extends AggregateEvent<NumeroReservaId> {
         return reservaHabitacion;
     }
 
-    public void asociarAdmisionDePaciente(AdmisionId admisionId){
-        appendChange(new AdmisionAsociada(admisionId)).apply();
+    public void asociarAdmisionDePaciente(AdmisionId admisionId, IdentificacionMedico identificacionMedico) {
+        appendChange(new AdmisionAsociada(admisionId, identificacionMedico)).apply();
     }
 
-    public void agregarAdmisionista(IdentificacionEmpleado identificacionEmpleado){
+    public void agregarAdmisionista(IdentificacionEmpleado identificacionEmpleado) {
         appendChange(new AdmisionistaAgregado(identificacionEmpleado)).apply();
     }
 
-    public void agregarHabitacion(NumeroHabitacion numeroHabitacion, Tipo tipo, Estado estado, CantidadCama cantidadCama){
+    public void agregarHabitacion(NumeroHabitacion numeroHabitacion, Tipo tipo, Estado estado, CantidadCama cantidadCama) {
         Objects.requireNonNull(numeroHabitacion);
         Objects.requireNonNull(tipo);
         Objects.requireNonNull(estado);
         Objects.requireNonNull(cantidadCama);
-        appendChange(new HabitacionAgregada(numeroHabitacion,tipo,estado,cantidadCama)).apply();
+        appendChange(new HabitacionAgregada(numeroHabitacion, tipo, estado, cantidadCama)).apply();
     }
 
-    public void agregarBotiquin(ConsecutivoId consecutivoId,Tipo tipo,Medicamento medicamento,Insumo insumo){
+    public void agregarBotiquin(ConsecutivoId consecutivoId, Tipo tipo, Medicamento medicamento, Insumo insumo) {
         Objects.requireNonNull(consecutivoId);
         Objects.requireNonNull(tipo);
         Objects.requireNonNull(medicamento);
         Objects.requireNonNull(insumo);
-        appendChange(new BotiquinAgregado(consecutivoId,tipo,medicamento,insumo)).apply();
+        appendChange(new BotiquinAgregado(consecutivoId, tipo, medicamento, insumo)).apply();
     }
 
-    public void actualizarHabitacionDePaciente(NumeroHabitacion numeroHabitacion,Estado estado,CantidadCama cantidadCama){
-        appendChange(new HabitacionDePacienteActualizada(numeroHabitacion,estado,cantidadCama)).apply();
+    public void actualizarHabitacionDePaciente(NumeroHabitacion numeroHabitacion, Estado estado, CantidadCama cantidadCama) {
+        appendChange(new HabitacionDePacienteActualizada(numeroHabitacion, estado, cantidadCama)).apply();
     }
 
-    public void actualizarEstadoDeHabitacion(NumeroHabitacion numeroHabitacion,Estado estado){
-        appendChange(new EstadoDeHabitacionDePacienteActualizada(numeroHabitacion,estado)).apply();
+    public void actualizarEstadoDeHabitacion(NumeroHabitacion numeroHabitacion, Estado estado) {
+        appendChange(new EstadoDeHabitacionDePacienteActualizada(numeroHabitacion, estado)).apply();
     }
 
-    public void actualizarMedicamento(ConsecutivoId consecutivoId,Medicamento medicamento){
-        appendChange(new MedicamentoActualizado(consecutivoId,medicamento)).apply();
+    public void actualizarMedicamento(ConsecutivoId consecutivoId, Medicamento medicamento) {
+        appendChange(new MedicamentoActualizado(consecutivoId, medicamento)).apply();
     }
 
-    public void actualizarInsumo(ConsecutivoId consecutivoId,Insumo insumo){
-        appendChange(new InsumoActualizado(consecutivoId,insumo)).apply();
+    public void actualizarInsumo(ConsecutivoId consecutivoId, Insumo insumo) {
+        appendChange(new InsumoActualizado(consecutivoId, insumo)).apply();
     }
 
     protected Optional<Habitacion> getHabitacionPorId(NumeroHabitacion numeroHabitacion) {

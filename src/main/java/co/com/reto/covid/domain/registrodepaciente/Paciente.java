@@ -6,7 +6,6 @@ import co.com.sofka.domain.generic.Entity;
 import java.util.Objects;
 
 public class Paciente extends Entity<IdentificacionPaciente> {
-
     protected TipoDeIdentificacion tipoDeIdentificacion;
     protected Nombres nombres;
     protected Telefono telefono;

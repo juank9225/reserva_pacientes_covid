@@ -9,7 +9,7 @@ public class RegistroDePacienteChange extends EventChange {
 
     public RegistroDePacienteChange(RegistroDePaciente registroDePaciente) {
 
-        apply((RegistroDePacienteCreado event)->{
+        apply((RegistroDePacienteCreado event) -> {
             registroDePaciente.fecha = event.getFecha();
             registroDePaciente.pacientes = new HashSet<>();
             registroDePaciente.medicos = new HashSet<>();
@@ -17,7 +17,7 @@ public class RegistroDePacienteChange extends EventChange {
             registroDePaciente.teleConsultas = new HashSet<>();
         });
 
-        apply((PacienteAgregado event)->{
+        apply((PacienteAgregado event) -> {
             registroDePaciente.pacientes.add(new Paciente(
                     event.getIdentificacionPaciente(),
                     event.getTipoDeIdentificacion(),
@@ -27,14 +27,14 @@ public class RegistroDePacienteChange extends EventChange {
             ));
         });
 
-        apply((MedicoAgregado event)->{
+        apply((MedicoAgregado event) -> {
             registroDePaciente.medicos.add(new Medico(
-               event.getIdentificacionMedico(),
-               event.getTipoDeIdentificacion(),
-               event.getNombres(),
-               event.getTelefono(),
-               event.getRegistroMedico(),
-               event.getEspecialidad()
+                    event.getIdentificacionMedico(),
+                    event.getTipoDeIdentificacion(),
+                    event.getNombres(),
+                    event.getTelefono(),
+                    event.getRegistroMedico(),
+                    event.getEspecialidad()
             ));
         });
 
@@ -49,7 +49,7 @@ public class RegistroDePacienteChange extends EventChange {
             ));
         });
 
-        apply((TeleConsultaAgregada event)->{
+        apply((TeleConsultaAgregada event) -> {
             registroDePaciente.teleConsultas.add(new TeleConsulta(
                     event.getRadicadoId(),
                     event.getFecha(),
@@ -58,27 +58,27 @@ public class RegistroDePacienteChange extends EventChange {
             ));
         });
 
-        apply((NombreDePacienteActualizado event)->{
-          var paciente = registroDePaciente.getPacientePorId(event.getIdentificacionPaciente())
-                    .orElseThrow(()->new IllegalArgumentException("no se encontro el Id de la persona"));
-                paciente.actualizarNombrePaciente(event.getNombres());
+        apply((NombreDePacienteActualizado event) -> {
+            var paciente = registroDePaciente.getPacientePorId(event.getIdentificacionPaciente())
+                    .orElseThrow(() -> new IllegalArgumentException("no se encontro el Id de la persona"));
+            paciente.actualizarNombrePaciente(event.getNombres());
         });
 
-        apply((TelefonoDePacienteActualizado event)->{
+        apply((TelefonoDePacienteActualizado event) -> {
             var paciente = registroDePaciente.getPacientePorId(event.getIdentificacionPaciente())
-                    .orElseThrow(()->new IllegalArgumentException("no se encontro el Id de la persona"));
+                    .orElseThrow(() -> new IllegalArgumentException("no se encontro el Id de la persona"));
             paciente.actualizarTelefonoPaciente(event.getTelefono());
         });
 
-        apply((RegistroMedicoActualizado event)->{
+        apply((RegistroMedicoActualizado event) -> {
             var medico = registroDePaciente.getMedicoPorId(event.getIdentificacionMedico())
-                    .orElseThrow(()->new IllegalArgumentException("no se encontro el Id del medico"));
+                    .orElseThrow(() -> new IllegalArgumentException("no se encontro el Id del medico"));
             medico.actualizarRegistroMedico(event.getRegistroMedico());
         });
 
-        apply((EspecialidadDelMedicoActualizada event)->{
+        apply((EspecialidadDelMedicoActualizada event) -> {
             var medico = registroDePaciente.getMedicoPorId(event.getIdentificacionMedico())
-                    .orElseThrow(()->new IllegalArgumentException("no se encontro el Id del medico"));
+                    .orElseThrow(() -> new IllegalArgumentException("no se encontro el Id del medico"));
             medico.actualizarEspecialidadMedico(event.getEspecialidad());
         });
 

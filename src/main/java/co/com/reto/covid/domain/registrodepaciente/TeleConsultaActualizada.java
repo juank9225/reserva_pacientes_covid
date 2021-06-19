@@ -11,6 +11,7 @@ public class TeleConsultaActualizada extends DomainEvent {
     private final Fecha fecha;
     private final Hora hora;
     private final Satisfaccion satisfaccion;
+
     public TeleConsultaActualizada(RadicadoId radicadoId, Fecha fecha, Hora hora, Satisfaccion satisfaccion) {
         super("sofka.registropersona.teleconsultaactualizada");
         this.radicadoId = radicadoId;

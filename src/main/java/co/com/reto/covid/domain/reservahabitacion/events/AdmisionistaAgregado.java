@@ -5,6 +5,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 
 public class AdmisionistaAgregado extends DomainEvent {
     private final IdentificacionEmpleado identificacionEmpleado;
+
     public AdmisionistaAgregado(IdentificacionEmpleado identificacionEmpleado) {
         super("sofka.reservahabitacion.admisionastaagregado");
         this.identificacionEmpleado = identificacionEmpleado;

@@ -9,6 +9,7 @@ public class HabitacionDePacienteActualizada extends DomainEvent {
     private final Estado estado;
     private final CantidadCama cantidadCama;
     private final NumeroHabitacion numeroHabitacion;
+
     public HabitacionDePacienteActualizada(NumeroHabitacion numeroHabitacion,Estado estado, CantidadCama cantidadCama) {
         super("sofka.reservahabitacion.habitaciondepacienteactualizada");
         this.estado = estado;

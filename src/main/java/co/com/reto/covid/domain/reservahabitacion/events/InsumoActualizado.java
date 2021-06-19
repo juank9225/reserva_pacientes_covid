@@ -7,6 +7,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 public class InsumoActualizado extends DomainEvent {
     private final Insumo insumo;
     private final ConsecutivoId consecutivoId;
+
     public InsumoActualizado(ConsecutivoId consecutivoId,Insumo insumo) {
         super("sofka.reservahabitacion.insumoactualizado");
         this.insumo = insumo;

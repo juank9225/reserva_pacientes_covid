@@ -1,10 +1,8 @@
 package co.com.reto.covid.usecases.reservahabitacion;
 
-import co.com.reto.covid.domain.registrodepaciente.values.AdmisionId;
-import co.com.reto.covid.domain.registrodepaciente.values.Estado;
-import co.com.reto.covid.domain.registrodepaciente.values.Fecha;
-import co.com.reto.covid.domain.registrodepaciente.values.Hora;
+import co.com.reto.covid.domain.registrodepaciente.values.*;
 import co.com.reto.covid.domain.reservahabitacion.commands.AsociarAdmisionDePaciente;
+import co.com.reto.covid.domain.reservahabitacion.events.AdmisionAsociada;
 import co.com.reto.covid.domain.reservahabitacion.events.ReservaHabitacionAgregada;
 import co.com.reto.covid.domain.reservahabitacion.values.NumeroReservaId;
 import co.com.sofka.business.generic.UseCaseHandler;
@@ -60,6 +58,9 @@ class AsociarAdmisionDePacienteUseCaseTest {
                 new Fecha(new Date(1990,05,20)),
                 new Hora("05:00 pm"),
                 new Estado("no registra pago")
+        ),new AdmisionAsociada(
+                AdmisionId.of("1111"),
+                IdentificacionMedico.of("987654321")
         ));
     }
 

@@ -11,6 +11,7 @@ public class BotiquinAgregado extends DomainEvent {
     private final Tipo tipo;
     private final Medicamento medicamento;
     private final Insumo insumo;
+
     public BotiquinAgregado(ConsecutivoId consecutivoId, Tipo tipo, Medicamento medicamento, Insumo insumo) {
         super("sofka.reservahabitacion.botiquinagregado");
         this.consecutivoId = consecutivoId;

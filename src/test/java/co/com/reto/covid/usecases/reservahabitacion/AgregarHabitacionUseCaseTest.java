@@ -1,9 +1,6 @@
 package co.com.reto.covid.usecases.reservahabitacion;
 
-import co.com.reto.covid.domain.registrodepaciente.values.AdmisionId;
-import co.com.reto.covid.domain.registrodepaciente.values.Estado;
-import co.com.reto.covid.domain.registrodepaciente.values.Fecha;
-import co.com.reto.covid.domain.registrodepaciente.values.Hora;
+import co.com.reto.covid.domain.registrodepaciente.values.*;
 import co.com.reto.covid.domain.reservahabitacion.commands.AgregarHabitacion;
 import co.com.reto.covid.domain.reservahabitacion.commands.AsociarAdmisionDePaciente;
 import co.com.reto.covid.domain.reservahabitacion.events.AdmisionAsociada;
@@ -70,7 +67,8 @@ class AgregarHabitacionUseCaseTest {
                 new Hora("05:00 pm"),
                 new Estado("no registra pago")
         ),new AdmisionAsociada(
-                new AdmisionId("1111")
+                new AdmisionId("1111"),
+                new IdentificacionMedico("987654321")
         ));
     }
 }
